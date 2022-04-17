@@ -1,5 +1,10 @@
-# ehp22-sms
-Experimentelle Hardwareprojekte (EHP)
+# Experimentelle Hardwareprojekte (EHP)
+(ehp22-scm)
+
+Mitwirkende:
+- M. Stock
+- S. Chandla
+- D. Motz
 
 Friedrich Schiller Universität Jena
 SS 2022
