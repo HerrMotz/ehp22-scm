@@ -58,7 +58,7 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>S0</string>
+          <string>B0</string>
         </entry>
       </elementAttributes>
       <pos x="880" y="400"/>
@@ -68,7 +68,7 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>S1</string>
+          <string>B1</string>
         </entry>
       </elementAttributes>
       <pos x="880" y="480"/>
@@ -78,7 +78,7 @@
       <elementAttributes>
         <entry>
           <string>Description</string>
-          <string>S0</string>
+          <string>B0</string>
         </entry>
         <entry>
           <string>rotation</string>
@@ -92,7 +92,7 @@
       <elementAttributes>
         <entry>
           <string>Description</string>
-          <string>S1</string>
+          <string>B1</string>
         </entry>
         <entry>
           <string>rotation</string>
@@ -627,7 +627,7 @@
         </entry>
         <entry>
           <string>Label</string>
-          <string>S0</string>
+          <string>B0</string>
         </entry>
       </elementAttributes>
       <pos x="1000" y="-340"/>
@@ -641,7 +641,7 @@
         </entry>
         <entry>
           <string>Label</string>
-          <string>S1</string>
+          <string>B1</string>
         </entry>
       </elementAttributes>
       <pos x="940" y="-340"/>
