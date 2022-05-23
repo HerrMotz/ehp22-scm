@@ -1,0 +1,135 @@
+$date
+	Mon May 23 17:43:23 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module ripple_carry_adder_4_tb $end
+$var wire 7 ! l_HEX3 [6:0] $end
+$var wire 7 " l_HEX2 [6:0] $end
+$var wire 7 # l_HEX1 [6:0] $end
+$var wire 7 $ l_HEX0 [6:0] $end
+$var reg 8 % l_i [7:0] $end
+$scope module dut $end
+$var wire 8 & SW [7:0] $end
+$var wire 4 ' l_s [3:0] $end
+$var wire 4 ( l_carry_out [3:0] $end
+$var wire 7 ) HEX3 [6:0] $end
+$var wire 7 * HEX2 [6:0] $end
+$var wire 7 + HEX1 [6:0] $end
+$var wire 7 , HEX0 [6:0] $end
+$scope module m_d0 $end
+$var wire 4 - i_binary_number [3:0] $end
+$var reg 7 . o_display [6:0] $end
+$upscope $end
+$scope module m_d1 $end
+$var wire 4 / i_binary_number [3:0] $end
+$var reg 7 0 o_display [6:0] $end
+$upscope $end
+$scope module m_d2 $end
+$var wire 4 1 i_binary_number [3:0] $end
+$var reg 7 2 o_display [6:0] $end
+$upscope $end
+$scope module m_d3 $end
+$var wire 4 3 i_binary_number [3:0] $end
+$var reg 7 4 o_display [6:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b1000000 4
+b0 3
+b1000000 2
+b0 1
+b1000000 0
+b0 /
+b1000000 .
+b0 -
+b1000000 ,
+b1000000 +
+b1000000 *
+b1000000 )
+b0 (
+b0 '
+b0 &
+b0 %
+b1000000 $
+b1000000 #
+b1000000 "
+b1000000 !
+$end
+#10
+b10010 "
+b10010 *
+b10010 2
+b101 '
+b101 1
+b110000 $
+b110000 ,
+b110000 .
+b100100 #
+b100100 +
+b100100 0
+b11 -
+b10 /
+b100011 %
+b100011 &
+#20
+b0 "
+b0 *
+b0 2
+b1000 '
+b1000 1
+b1111000 $
+b1111000 ,
+b1111000 .
+b1111001 #
+b1111001 +
+b1111001 0
+b111 -
+b1 /
+b10111 %
+b10111 &
+#30
+b1111001 !
+b1111001 )
+b1111001 4
+b1000000 "
+b1000000 *
+b1000000 2
+b1 (
+b1 3
+b0 '
+b0 1
+b0 $
+b0 ,
+b0 .
+b0 #
+b0 +
+b0 0
+b1000 -
+b1000 /
+b10001000 %
+b10001000 &
+#40
+b110 "
+b110 *
+b110 2
+b1110 '
+b1110 1
+b1110 $
+b1110 ,
+b1110 .
+b1110 #
+b1110 +
+b1110 0
+b1111 -
+b1111 /
+b11111111 %
+b11111111 &
+#50
