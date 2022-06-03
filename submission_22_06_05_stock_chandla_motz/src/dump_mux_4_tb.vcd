@@ -1,0 +1,58 @@
+$date
+	Thu Jun  2 12:27:23 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module adder_tb $end
+$var wire 1 ! l_carry_out $end
+$var wire 8 " l_c [7:0] $end
+$var reg 8 # l_a [7:0] $end
+$var reg 8 $ l_b [7:0] $end
+$var reg 1 % l_carry_in $end
+$scope module dut $end
+$var wire 8 & i_a [7:0] $end
+$var wire 8 ' i_b [7:0] $end
+$var wire 1 % i_carry_in $end
+$var wire 8 ( o_s [7:0] $end
+$var wire 1 ! o_carry_out $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 (
+b0 '
+b0 &
+0%
+b0 $
+b0 #
+b0 "
+0!
+$end
+#10
+1!
+b1100010 "
+b1100010 (
+b10100101 $
+b10100101 '
+b10111101 #
+b10111101 &
+#20
+0!
+b11111111 "
+b11111111 (
+b1111 $
+b1111 '
+b11110000 #
+b11110000 &
+#30
+b1111111 "
+b1111111 (
+1!
+b10001111 $
+b10001111 '
+#40
