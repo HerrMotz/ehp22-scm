@@ -12,13 +12,19 @@ module clocks_de10_lite( input  logic       MAX10_CLK1_50,
                          output logic [9:0] LEDR );
                          
   logic m_ro0, m_ro1, m_ro2; 
+  logic m_out0, m_out1, m_out2;
                          
-  counter_mod_k_ro m_mk0( MAX10_CLK1_50, SW[0],   7'd2500000, m_ro0 );
-  counter_mod_k_ro m_mk0( MAX10_CLK1_50, SW[1],  8'd25000000, m_ro1 );
-  counter_mod_k_ro m_mk0( MAX10_CLK1_50, SW[2], 9'd250000000, m_ro2 );
+  counter_mod_k_ro #(23) m_mk0( MAX10_CLK1_50, SW[0],   7'd2500000, m_ro0 );
+  counter_mod_k_ro #(25) m_mk1( MAX10_CLK1_50, SW[0],  8'd25000000, m_ro1 );
+  counter_mod_k_ro #(28) m_mk2( MAX10_CLK1_50, SW[0], 9'd250000000, m_ro2 );
                          
-  clock #(22) m_clk0( m_ro0, SW[0], LEDR[5] ); // 10
-  clock #(22) m_clk0( m_ro1, SW[1], LEDR[5] ); // 1
-  clock #(22) m_clk0( m_ro2, SW[2], LEDR[5] ); // 0.1
+  clock m_clk0( m_ro0, SW[0], m_out0 ); // 10
+  clock m_clk1( m_ro1, SW[0], m_out1 ); // 1
+  clock m_clk2( m_ro2, SW[0], m_out2 ); // 0.1
+  
+  assign LEDR[5] = m_out0;
+  assign LEDR[6] = m_out1;
+  assign LEDR[7] = m_out2;
   
 endmodule
+
