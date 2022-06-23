@@ -12,7 +12,22 @@ module clock( input  logic i_roll_over,
               output logic o_clk );
   logic m_clk;
 
-  // TODO: finish implementation
+  // on positive edge of input clock or reset
+  // either reset counter or assign next value
+  always_ff @(posedge i_roll_over, posedge i_reset)
+    begin
+      if( i_reset == 1'b1 )
+        begin
+          m_clk <= 0;
+        end
+      else
+        begin
+          if( i_roll_over == 1'b1 )
+            begin
+              m_clk <= ~m_clk;
+            end
+        end
+    end
 
   assign o_clk = m_clk;
 endmodule
