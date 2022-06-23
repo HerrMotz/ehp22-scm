@@ -62,6 +62,12 @@ module counter_mod_k_ro_tb;
     assert( l_roll_over === 3'd0 );
     #10;
     assert( l_roll_over === 3'd1 );
+    #10;
+    assert( l_roll_over === 3'd0 );
+    #10;
+    assert( l_roll_over === 3'd0 );
+    #10;
+    assert( l_roll_over === 3'd1 );
 
     $finish;
   end
