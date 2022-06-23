@@ -6,9 +6,9 @@ module counter_mod_k_ro_tb;
   logic l_reset;
 
   logic l_roll_over;
-  logic [1:0] l_k;
+  logic [2:0] l_k;
   
-  assign l_k = 3'b11;
+  assign l_k = 3'b100;
 
   // reset
   initial
@@ -27,7 +27,7 @@ module counter_mod_k_ro_tb;
       #5;
     end
 
-  counter_mod_k_ro #(2) dut( l_clk,
+  counter_mod_k_ro #(3) dut( l_clk,
                              l_reset,
                              l_k,
                              l_roll_over );
@@ -43,10 +43,6 @@ module counter_mod_k_ro_tb;
     #10;
     assert( l_roll_over === 3'd0 );
     #10;
-    assert( l_roll_over === 3'd1 );
-    #10;
-    assert( l_roll_over === 3'd0 );
-    #10;
     assert( l_roll_over === 3'd0 );
     #10;
     assert( l_roll_over === 3'd1 );
@@ -55,13 +51,27 @@ module counter_mod_k_ro_tb;
     #10;
     assert( l_roll_over === 3'd0 );
     #10;
+    assert( l_roll_over === 3'd0 );
+    #10;
     assert( l_roll_over === 3'd1 );
     #10;
     assert( l_roll_over === 3'd0 );
     #10;
     assert( l_roll_over === 3'd0 );
     #10;
+    assert( l_roll_over === 3'd0 );
+    #10;
     assert( l_roll_over === 3'd1 );
+    #10;
+    assert( l_roll_over === 3'd0 );
+    #10;
+    assert( l_roll_over === 3'd0 );
+    #10;
+    assert( l_roll_over === 3'd0 );
+    #10;
+    assert( l_roll_over === 3'd1 );
+    #10;
+    assert( l_roll_over === 3'd0 );
     #10;
     assert( l_roll_over === 3'd0 );
     #10;
