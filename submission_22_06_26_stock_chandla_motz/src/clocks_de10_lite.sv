@@ -13,21 +13,23 @@ module clocks_de10_lite( input  logic       MAX10_CLK1_50,
                          
   logic m_ro0, m_ro1, m_ro2; 
   logic m_out0, m_out1, m_out2;
+  logic m_switch;
+  
+  assign m_switch = ~SW[0];
                          
-  counter_mod_k_ro #(23) m_mk0( MAX10_CLK1_50, SW[0],   7'd2500000, m_ro0 );
-  counter_mod_k_ro #(25) m_mk1( MAX10_CLK1_50, SW[0],  8'd25000000, m_ro1 );
-  counter_mod_k_ro #(28) m_mk2( MAX10_CLK1_50, SW[0], 9'd250000000, m_ro2 );
+  counter_mod_k_ro #(22) m_mk0( MAX10_CLK1_50, m_switch,   22'd2500000, m_ro0 );
+  counter_mod_k_ro #(25) m_mk1( MAX10_CLK1_50, m_switch,  25'd25000000, m_ro1 );
+  counter_mod_k_ro #(28) m_mk2( MAX10_CLK1_50, m_switch, 28'd250000000, m_ro2 );
                          
-  clock m_clk0( m_ro0, SW[0], m_out0 ); // 10
-  clock m_clk1( m_ro1, SW[0], m_out1 ); // 1
-  clock m_clk2( m_ro2, SW[0], m_out2 ); // 0.1
+  clock m_clk0( m_ro0, m_switch, m_out0 ); // 10
+  clock m_clk1( m_ro1, m_switch, m_out1 ); // 1
+  clock m_clk2( m_ro2, m_switch, m_out2 ); // 0.1
   
   assign LEDR[5] = m_out0;
   assign LEDR[6] = m_out1;
   assign LEDR[7] = m_out2;
   
 endmodule
-
 /**
  * Top-level module of the custom clocks.
  * The module displays a 10Hz clock signal through LEDR5, a 1Hz signal through LEDR6, and a 0.1Hz signal through LEDR7.
@@ -60,3 +62,4 @@ module clocks_de10_lite( input  logic       MAX10_CLK1_50,
   assign LEDR[7] = m_out2;
   
 endmodule
+
