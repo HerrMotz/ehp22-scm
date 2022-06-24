@@ -1,32 +1,33 @@
 /**
- * Top-level module of the custom clocks.
- * The module displays a 10Hz clock signal through LEDR5, a 1Hz signal through LEDR6, and a 0.1Hz signal through LEDR7.
- * Switch button SW0 resets all resettable modules on low.
+ * Outputs a clock signal based on the given rollover signal.
+ * The clock signal changes on every positive edge of the rollover signal.
+ * On a positive edge of the reset signal, the clock is reset to high.
  *
- * @param MAX10_CLK1_50 MAX10_CLK1_50 clock signal available in the MAX 10 FPGA.
- * @param SW bits of ten switch buttons SW9 - SW0.
- * @param LEDR output bits corresponding to the board's ten leds LEDR9 - LEDR0.
+ * @param i_roll_over rollover signal.
+ * @param i_reset reset signal.
+ * @param o_clk set to generated clock signal.
  **/
-module clocks_de10_lite( input  logic       MAX10_CLK1_50,
-                         input  logic [9:0] SW,
-                         output logic [9:0] LEDR );
-                         
-  logic m_ro0, m_ro1, m_ro2; 
-  logic m_out0, m_out1, m_out2;
-  logic m_switch;
-  
-  assign m_switch = ~SW[0];
-                         
-  counter_mod_k_ro #(22) m_mk0( MAX10_CLK1_50, m_switch,   22'd2500000, m_ro0 );
-  counter_mod_k_ro #(25) m_mk1( MAX10_CLK1_50, m_switch,  25'd25000000, m_ro1 );
-  counter_mod_k_ro #(28) m_mk2( MAX10_CLK1_50, m_switch, 28'd250000000, m_ro2 );
-                         
-  clock m_clk0( m_ro0, m_switch, m_out0 ); // 10
-  clock m_clk1( m_ro1, m_switch, m_out1 ); // 1
-  clock m_clk2( m_ro2, m_switch, m_out2 ); // 0.1
-  
-  assign LEDR[5] = m_out0;
-  assign LEDR[6] = m_out1;
-  assign LEDR[7] = m_out2;
-  
+module clock( input  logic i_roll_over,
+              input  logic i_reset,
+              output logic o_clk );
+  logic m_clk;
+
+  // on positive edge of input clock or reset
+  // either reset counter or assign next value
+  always_ff @(posedge i_roll_over, posedge i_reset)
+    begin
+      if( i_reset == 1'b1 )
+        begin
+          m_clk <= 1;
+        end
+      else
+        begin
+          if( i_roll_over == 1'b1 )
+            begin
+              m_clk <= ~m_clk;
+            end
+        end
+    end
+
+  assign o_clk = m_clk;
 endmodule
