@@ -143,6 +143,8 @@ module stopwatch_de10_lite( input  logic       MAX10_CLK1_50,
   decoder m_decoder_60  ( l_ro_s_60_out, HEX4[6:0] );
   decoder m_decoder_600 ( l_ro_s_600_out, HEX5[6:0] );
   
+  // the blinking dash. Set all pins to "off" except for the
+  // horizontal line, which blinks each second (l_clk_s_1)
   assign HEX3[6] = l_clk_s_1;
   assign HEX3[5:0] = 6'b111111;
 
