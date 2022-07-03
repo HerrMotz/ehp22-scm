@@ -85,7 +85,7 @@ module stopwatch_de10_lite( input  logic       MAX10_CLK1_50,
   clock clock_1s( l_ro_s_1,
                   l_reset,
                   l_clk_s_1 );
-                                     
+
   counter_mod_k_count #(4) counter_over_1s_out( l_clk_s_1,
                                                 l_reset,
                                                 4'd10,
@@ -100,11 +100,12 @@ module stopwatch_de10_lite( input  logic       MAX10_CLK1_50,
   clock clock_10s( l_ro_s_10,
                    l_reset,
                    l_clk_s_10 );
-                                      
+
   counter_mod_k_count #(3) counter_over_10s_out( l_clk_s_10,
                                                 l_reset,
                                                 3'd6,
                                                 l_ro_s_10_out );
+
   // 60s clock
   counter_mod_k_ro #(31) counter_over_60s( l_clk_50mhz,
                                            l_reset,
@@ -114,11 +115,12 @@ module stopwatch_de10_lite( input  logic       MAX10_CLK1_50,
   clock clock_60s( l_ro_s_60,
                    l_reset,
                    l_clk_s_60 );
-                                      
+
   counter_mod_k_count #(4) counter_over_60s_out( l_clk_s_60,
                                                  l_reset,
                                                  4'd10,
                                                  l_ro_s_60_out );
+
   // 600s clock
   counter_mod_k_ro #(34) counter_over_600s( l_clk_50mhz,
                                             l_reset,
@@ -128,13 +130,13 @@ module stopwatch_de10_lite( input  logic       MAX10_CLK1_50,
   clock clock_600s( l_ro_s_600,
                    l_reset,
                    l_clk_s_600 );
-                                      
+
   counter_mod_k_count #(4) counter_over_600s_out( l_clk_s_600,
                                                   l_reset,
                                                   7'd99,
                                                   l_ro_s_600_out );
   
-  //Decoder                                         
+  // Counter to seven segment display decoder
   decoder m_decoder_01  ( l_ro_s_01_out, HEX0[6:0] );
   decoder m_decoder_1   ( l_ro_s_1_out, HEX1[6:0] );
   decoder m_decoder_10  ( l_ro_s_10_out, HEX2[6:0] );
@@ -144,13 +146,14 @@ module stopwatch_de10_lite( input  logic       MAX10_CLK1_50,
   assign HEX3[6] = l_clk_s_1;
   assign HEX3[5:0] = 6'b111111;
 
-  // assign LEDs to clocks: 0.1s, 1s, 10s
+  // assign LEDs to clocks: 0.1s, 1s, 10s, 60s, 600s
   assign LEDR[5] = l_clk_s_01;
   assign LEDR[6] = l_clk_s_1;
   assign LEDR[7] = l_clk_s_10;
   assign LEDR[8] = l_clk_s_60;
   assign LEDR[9] = l_clk_s_600;
   
+  // make the dot light up!
   assign HEX1[7] = 1'b0;
   
 endmodule
