@@ -19,5 +19,11 @@ copy_asm:
         ldr x3, [x0, #32]
         str x3, [x1, #32]
 
+        ldr x3, [x0, #40]
+        str x3, [x1, #40]
+
+        ldr x3, [x0, #48]
+	str x3, [x1, #48]
+
         ret
         .size   copy_asm, (. - copy_asm)

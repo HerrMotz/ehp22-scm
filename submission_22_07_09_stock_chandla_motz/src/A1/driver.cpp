@@ -20,7 +20,7 @@ int main() {
     copy_c( l_a,
             l_b_0 );
 
-    for( unsigned short l_va = 0; l_va < 5; l_va++ ) {
+    for( unsigned short l_va = 0; l_va < 7; l_va++ ) {
         std::cout << l_a[l_va] << " / " << l_b_0[l_va] << std::endl;
     }
 
@@ -29,7 +29,7 @@ int main() {
     copy_asm( l_a,
               l_b_1 );
 
-    for( unsigned short l_va = 0; l_va < 5; l_va++ ) {
+    for( unsigned short l_va = 0; l_va < 7; l_va++ ) {
         std::cout << l_a[l_va] << " / " << l_b_1[l_va] << std::endl;
     }
 
