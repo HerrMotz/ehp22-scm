@@ -10,7 +10,6 @@ start_loop:
         // x2 -> *i_b
         // x3 -> *o_c
         cmp x0, #0
-        sub x0, x0, #1
         b.eq end_loop
 
         // x4 -> a
@@ -27,6 +26,8 @@ start_loop:
         add x1, x1, #8
         add x2, x2, #8
         add x3, x3, #8
+
+        sub x0, x0, #1
 
         b start_loop
 
