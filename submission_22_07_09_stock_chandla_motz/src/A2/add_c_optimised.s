@@ -9,9 +9,12 @@ add_c:
 .LFB0:
         .cfi_startproc
         // x0 is our i_n_values
+        // cbz branches when zero and does
+        // not set flags
         cbz     x0, .L1
 
-        // x4 is our counter
+        // x4 is our counter, which we initialise
+        // with zero
         mov     x4, 0
         .p2align 3,,7
 
@@ -24,7 +27,8 @@ add_c:
         ldr     x5, [x1, x4, lsl 3]
         ldr     x6, [x2, x4, lsl 3]
 
-        // adds the loaded values from x1, x2
+        // adds the loaded values
+        // from memory address in x1, x2
         add     x5, x5, x6
 
         // stores them back using register offset
