@@ -6,7 +6,7 @@
 + we subtract our immediate -3 * 4 = -12 from our current process counter position
 + a multiplexer decides whether the branch is executed or not (right of the add)
 + this multiplexer takes an input from a series of gates, taking control bits of the instruction and the flags as inputs
-+ the gates are arranged in such a way, that our branch 4 instruction bits allow the corresponding flag to get to the Mux.
++ the gates are arranged in such a way, that our branch 4 instruction bits allow the corresponding flag to get to the Mux. The or gate takes all possible branches and outputs true if one of them is true.
 + if the input to the Mux is 1, the process counter is set to the value calculated by the "shift left 2"-adder
 
 
